@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Favorites from "./modules/favorites/Favorites";
+import SearchBar from "./modules/search/SearchBar";
+import Nominees from "./modules/nominees/Nominees";
+
+import { NomineesProvider } from "./modules/contexts/nominees";
+
+import { AppContainer } from "./App.styled";
+
+import Header from "./modules/design-system/components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NomineesProvider>
+      <AppContainer>
+        <Header>
+          <SearchBar />
+        </Header>
+        <Nominees />
+        <Favorites />
+      </AppContainer>
+    </NomineesProvider>
   );
 }
 

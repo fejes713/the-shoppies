@@ -21,7 +21,7 @@ const SearchBar = () => {
     const type = "movie";
 
     fetch(
-      `http://www.omdbapi.com/?apikey=${OMDB_KEY}&type=${type}&s=${searchTerm}`
+      `https://www.omdbapi.com/?apikey=${OMDB_KEY}&type=${type}&s=${searchTerm}`
     )
       .then((response) => response.json())
       .then((response) => {

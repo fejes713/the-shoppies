@@ -17,8 +17,9 @@ const PosterImage = styled.div<IPosterContainer>`
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
   object-fit: cover;
 
+  background-size: cover;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-position: center center;
 
   display: flex;
   align-items: center;

@@ -13,7 +13,6 @@ const SearchBar = () => {
   );
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
@@ -22,15 +21,14 @@ const SearchBar = () => {
     const type = "movie";
 
     fetch(
-      `${
-        "http://www.omdbapi.com/?" + "apikey="
-      }${OMDB_KEY}&type=${type}&s=${searchTerm}`
+      `http://www.omdbapi.com/?apikey=${OMDB_KEY}&type=${type}&s=${searchTerm}`
     )
       .then((response) => response.json())
       .then((response) => {
         setSearchedNominees(response.Search);
         setTotalSearchedNominees(Number(response.totalResults));
       });
+    // eslint-disable-next-line
   }, [debouncedSearchTerm]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

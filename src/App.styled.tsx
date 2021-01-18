@@ -12,13 +12,14 @@ export const AppContainer = styled.div`
   grid-template-areas:
     "header"
     "nominees"
+    "notifications"
     "favorites";
 
   @media screen and (min-width: 768px) {
     grid-template-columns: 24rem 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
-      "logo header"
+      "notifications header"
       "favorites nominees";
   }
 `;

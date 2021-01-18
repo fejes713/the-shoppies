@@ -4,6 +4,8 @@ import React, { useContext } from "react";
 import { NomineesContext } from "../contexts/nominees";
 import FavoritePreview from "./components/FavoritePreview";
 
+import LimitNotification from "./components/LimitNotification";
+
 import {
   FavoritesSection,
   SectionTitle,
@@ -34,28 +36,31 @@ const Favorites = () => {
   const isCompleted = favorites.length === 5;
 
   return (
-    <FavoritesSection>
-      <SectionTitleContainer>
-        <SectionTitle>Nominated Movies</SectionTitle>
-        <Star />
-      </SectionTitleContainer>
-      <Confetti active={isCompleted} config={confettiConfiguration} />
-      {favorites.length === 0 ? (
-        <EmptySection>
-          <EmptySectionIcon />
-          <EmptySectionLabel>
-            Ooops, your list is empty. Start by searching for your favorite
-            movies!
-          </EmptySectionLabel>
-        </EmptySection>
-      ) : (
-        <NomineeContainer>
-          {favorites.map((nominee) => (
-            <FavoritePreview nominee={nominee} />
-          ))}
-        </NomineeContainer>
-      )}
-    </FavoritesSection>
+    <>
+      <LimitNotification />
+      <FavoritesSection>
+        <SectionTitleContainer>
+          <SectionTitle>Nominated Movies</SectionTitle>
+          <Star />
+        </SectionTitleContainer>
+        <Confetti active={isCompleted} config={confettiConfiguration} />
+        {favorites.length === 0 ? (
+          <EmptySection>
+            <EmptySectionIcon />
+            <EmptySectionLabel>
+              Ooops, your list is empty. Start by searching for your favorite
+              movies!
+            </EmptySectionLabel>
+          </EmptySection>
+        ) : (
+          <NomineeContainer>
+            {favorites.map((nominee) => (
+              <FavoritePreview nominee={nominee} />
+            ))}
+          </NomineeContainer>
+        )}
+      </FavoritesSection>
+    </>
   );
 };
 

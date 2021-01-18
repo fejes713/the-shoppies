@@ -21,7 +21,7 @@ const Nominee = ({ nominee }: INomineeProps) => {
   };
 
   return (
-    <Container onClick={handleClick}>
+    <Container onClick={handleClick} isFavorite={isFavorite}>
       <Poster src={poster} />
       <Title>{title}</Title>
       <Year>{year}</Year>

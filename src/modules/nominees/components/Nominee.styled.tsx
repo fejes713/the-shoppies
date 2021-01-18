@@ -1,12 +1,27 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { colors } from "../../design-system/theme";
 
-export const Container = styled.a`
+interface IContainer {
+  isFavorite: boolean;
+}
+
+export const Container = styled.a<IContainer>`
+  --color-title: ${colors.black};
+  --color-year: ${colors.darkGrey};
+
   display: flex;
   flex-direction: column;
   cursor: pointer;
   user-select: none;
+
+  ${(props) =>
+    props.isFavorite &&
+    css`
+      --color-title: ${colors.lightGrey};
+      --color-year: ${colors.lightGrey};
+      filter: grayscale(100%);
+    `};
 `;
 
 export const Title = styled.span`
@@ -18,12 +33,12 @@ export const Title = styled.span`
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 8px 0px;
-  color: ${colors.black};
+  color: var(--color-title);
   text-align: center;
 `;
 
 export const Year = styled.span`
-  color: ${colors.darkGrey};
+  color: var(--color-year);
   font-size: 12px;
   text-align: center;
 `;
